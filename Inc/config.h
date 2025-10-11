@@ -11,7 +11,7 @@
 // or use VARIANT environment variable for example like "make -e VARIANT=VARIANT_NUNCHUK". Select only one at a time.
 #if !defined(PLATFORMIO)
   //#define VARIANT_ADC         // Variant for control via ADC input
-  #define VARIANT_USART       // Variant for Serial control via USART3 input
+  //#define VARIANT_USART       // Variant for Serial control via USART3 input
   //#define VARIANT_NUNCHUK     // Variant for Nunchuk controlled vehicle build
   //#define VARIANT_PPM         // Variant for RC-Remote with PPM-Sum Signal
   //#define VARIANT_PWM         // Variant for RC-Remote with PWM Signal
@@ -257,7 +257,7 @@
 
 
 // ############################### DEBUG LCD ###############################
-#define DEBUG_I2C_LCD                // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
+// #define DEBUG_I2C_LCD                // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 // ########################### END OF DEBUG LCD ############################
 
 
@@ -291,13 +291,13 @@
   #ifdef DUAL_INPUTS
     #define FLASH_WRITE_KEY     0x1101    // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
     // #define SIDEBOARD_SERIAL_USART3 1
-    //#define CONTROL_SERIAL_USART3 1       // right sensor board cable. Number indicates priority for dual-input. Disable if I2C (nunchuk or lcd) is used! For Arduino control check the hoverSerial.ino
-    //#define FEEDBACK_SERIAL_USART3        // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
+    #define CONTROL_SERIAL_USART3 1       // right sensor board cable. Number indicates priority for dual-input. Disable if I2C (nunchuk or lcd) is used! For Arduino control check the hoverSerial.ino
+    #define FEEDBACK_SERIAL_USART3        // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
     #define AUX_INPUT1          3, -1000, 0, 1000, 0  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define AUX_INPUT2          3, -1000, 0, 1000, 0  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #else
     #define FLASH_WRITE_KEY     0x1001    // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
-    //#define DEBUG_SERIAL_USART3           // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
+    #define DEBUG_SERIAL_USART3           // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
   #endif
 
   // #define TANK_STEERING                   // use for tank steering, each input controls each wheel 
@@ -312,20 +312,20 @@
 // ############################ VARIANT_USART SETTINGS ############################
 #ifdef VARIANT_USART
   // #define SIDEBOARD_SERIAL_USART2 0
-  #define CONTROL_SERIAL_USART2  0    // left sensor board cable, disable if ADC or PPM is used! For Arduino control check the hoverSerial.ino
-  #define FEEDBACK_SERIAL_USART2      // left sensor board cable, disable if ADC or PPM is used!
+  // #define CONTROL_SERIAL_USART2  0    // left sensor board cable, disable if ADC or PPM is used! For Arduino control check the hoverSerial.ino
+  // #define FEEDBACK_SERIAL_USART2      // left sensor board cable, disable if ADC or PPM is used!
 
   // #define SIDEBOARD_SERIAL_USART3 0
-  // #define CONTROL_SERIAL_USART3  0    // right sensor board cable. Number indicates priority for dual-input. Disable if I2C (nunchuk or lcd) is used! For Arduino control check the hoverSerial.ino
-  // #define FEEDBACK_SERIAL_USART3      // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
+  #define CONTROL_SERIAL_USART3  0    // right sensor board cable. Number indicates priority for dual-input. Disable if I2C (nunchuk or lcd) is used! For Arduino control check the hoverSerial.ino
+  #define FEEDBACK_SERIAL_USART3      // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
  
   // #define DUAL_INPUTS                 //  UART*(Primary) + SIDEBOARD(Auxiliary). Uncomment this to use Dual-inputs
   #define PRI_INPUT1             3, -1000, 0, 1000, 0     // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #define PRI_INPUT2             3, -1000, 0, 1000, 0     // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #ifdef DUAL_INPUTS
     #define FLASH_WRITE_KEY      0x1102  // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
-    #define SIDEBOARD_SERIAL_USART2 1   // left sideboard
-    //#define SIDEBOARD_SERIAL_USART3 1   // right sideboard
+    // #define SIDEBOARD_SERIAL_USART2 1   // left sideboard
+    #define SIDEBOARD_SERIAL_USART3 1   // right sideboard
     #define AUX_INPUT1           3, -1000, 0, 1000, 0     // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define AUX_INPUT2           3, -1000, 0, 1000, 0     // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #else
@@ -795,4 +795,3 @@
 // ############################# END OF VALIDATE SETTINGS ############################
 
 #endif
-
