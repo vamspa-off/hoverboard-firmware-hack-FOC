@@ -552,9 +552,15 @@ int main(void) {
         printf("Powering off, battery voltage is too low\r\n");
       #endif
       poweroff();
-    } else if (rtY_Left.z_errCode || rtY_Right.z_errCode) {                                           // 1 beep (low pitch): Motor error, disable motors
+    //} else if (rtY_Left.z_errCode || rtY_Right.z_errCode) {                                           // 1 beep (low pitch): Motor error, disable motors
+    //  enable = 0;
+    //  beepCount(1, 24, 1);
+	} else if (rtY_Left.z_errCode) {                                    					          // 2 beep (medium pitch): Motor error, disable motors
       enable = 0;
-      beepCount(1, 24, 1);
+      beepCount(2, 10, 1);
+	} else if (rtY_Right.z_errCode) {                              						              // 3 beep (medium pitch): Motor error, disable motors
+      enable = 0;
+      beepCount(2, 10, 1);
     } else if (timeoutFlgADC) {                                                                       // 2 beeps (low pitch): ADC timeout
       beepCount(2, 24, 1);
     } else if (timeoutFlgSerial) {                                                                    // 3 beeps (low pitch): Serial timeout
