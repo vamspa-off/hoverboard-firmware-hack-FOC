@@ -560,7 +560,7 @@ int main(void) {
       beepCount(2, 10, 1);
 	} else if (rtY_Right.z_errCode) {                              						              // 3 beep (medium pitch): Motor error, disable motors
       enable = 0;
-      beepCount(2, 10, 1);
+      beepCount(3, 10, 1);
     } else if (timeoutFlgADC) {                                                                       // 2 beeps (low pitch): ADC timeout
       beepCount(2, 24, 1);
     } else if (timeoutFlgSerial) {                                                                    // 3 beeps (low pitch): Serial timeout
